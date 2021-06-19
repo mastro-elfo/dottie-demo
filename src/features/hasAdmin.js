@@ -17,7 +17,6 @@ const hasAdmin = createSlice({
   reducers: {},
   extraReducers: {
     [init.fulfilled]: (state, { payload }) => {
-      console.log(payload);
       state.loading = false;
       state.has = payload.some(({ admin: { is } }) => is);
     },
