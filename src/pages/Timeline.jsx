@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 
-import { IconButton } from "@material-ui/core";
 import {
   DrawerIconButton,
   DrawerLists,
@@ -16,7 +15,8 @@ import { drawer as settings } from "./Settings";
 import { drawer as users } from "./Users";
 import { drawer as profileView } from "./ProfileView";
 
-import FaceIcon from "@material-ui/icons/Face";
+import { TimelineAvatar } from "../components";
+import { DottieContent } from "../containers";
 
 function Component() {
   const { logged } = useSelector((state) => state.login);
@@ -45,16 +45,16 @@ function Component() {
               />
             </DrawerIconButton>
           }
-          rightAction={
-            <IconButton color={admin ? "secondary" : "inherit"}>
-              <FaceIcon />
-            </IconButton>
-          }
+          rightAction={<TimelineAvatar user={logged} />}
         >
           Timeline, {logged.name} {logged.surname}
         </Header>
       }
-      content={<Content>Timeline content</Content>}
+      content={
+        <Content>
+          <DottieContent user={logged} />
+        </Content>
+      }
     />
   );
 }
