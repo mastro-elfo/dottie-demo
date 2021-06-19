@@ -1,5 +1,5 @@
 import { BackIconButton, Content, Header, Page } from "mastro-elfo-mui";
-import DrawerIcon from "@material-ui/icons/BrokenImage";
+import DrawerIcon from "@material-ui/icons/Face";
 
 function Component() {
   return (

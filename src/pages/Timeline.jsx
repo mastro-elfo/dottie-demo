@@ -1,3 +1,6 @@
+import { useSelector } from "react-redux";
+
+import { IconButton } from "@material-ui/core";
 import {
   DrawerIconButton,
   DrawerLists,
@@ -13,25 +16,42 @@ import { drawer as settings } from "./Settings";
 import { drawer as users } from "./Users";
 import { drawer as profileView } from "./ProfileView";
 
+import FaceIcon from "@material-ui/icons/Face";
+
 function Component() {
+  const { logged } = useSelector((state) => state.login);
+  // console.log(logged);
+  const admin = logged.admin.is;
+
   return (
     <Page
       header={
         <Header
-          LeftAction={
+          leftAction={
             <DrawerIconButton>
               <DrawerLists
                 lists={[
                   {
                     key: "pages",
-                    items: [about, log, settings, users, profileView],
+                    items: [
+                      profileView,
+                      admin ? users : null,
+                      admin ? settings : null,
+                      admin ? log : null,
+                      about,
+                    ],
                   },
                 ]}
               />
             </DrawerIconButton>
           }
+          rightAction={
+            <IconButton color={admin ? "secondary" : "inherit"}>
+              <FaceIcon />
+            </IconButton>
+          }
         >
-          Timeline
+          Timeline, {logged.name} {logged.surname}
         </Header>
       }
       content={<Content>Timeline content</Content>}

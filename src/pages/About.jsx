@@ -1,7 +1,5 @@
-
-
 import { BackIconButton, Content, Header, Page } from "mastro-elfo-mui";
-import DrawerIcon from "@material-ui/icons/BrokenImage";
+import DrawerIcon from "@material-ui/icons/Info";
 
 function Component() {
   return (
@@ -15,14 +13,13 @@ function Component() {
 export const route = {
   path: "/about",
   exact: true,
-  component: Component
+  component: Component,
 };
 
 export const drawer = {
   key: "about",
   primary: "About",
   secondary: "",
-  icon: <DrawerIcon/>,
-  title: "Open About"
-}
-
+  icon: <DrawerIcon />,
+  title: "Open About",
+};
