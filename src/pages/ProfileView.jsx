@@ -22,4 +22,5 @@ export const drawer = {
   secondary: "",
   icon: <DrawerIcon />,
   title: "Open Profile",
+  href: "/profileview",
 };
