@@ -18,7 +18,7 @@ import { drawer as users } from "./Users";
 import { drawer as profileView } from "./ProfileView";
 
 import { TimelineDrawerToolbar } from "../components";
-import { DottieContent } from "../containers";
+import { DottieAddIconButton, DottieContent } from "../containers";
 
 import LogoutIcon from "@material-ui/icons/ExitToApp";
 
@@ -60,6 +60,7 @@ function Component() {
               />
             </DrawerIconButton>
           }
+          rightAction={<DottieAddIconButton />}
         >
           Timeline
         </Header>

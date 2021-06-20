@@ -1,39 +1,19 @@
-// import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
+import { init } from "../features/timeline";
 import { DottieList } from "../components/";
 
 export default function DottieContent({ user }) {
-  const list = [
-    {
-      id: 15,
-      datetime: +new Date(),
-      title: "Drawer",
-      note: "Tutte le pagine sono apribili",
-      author: {
-        name: "Francesco",
-        surname: "Michienzi",
-      },
-    },
-    {
-      id: 10,
-      datetime: +new Date(),
-      title: "Avanzamento progetto",
-      note: "Tutto procede a meraviglia",
-      author: {
-        name: "Francesco",
-        surname: "Michienzi",
-      },
-    },
-    {
-      id: 1,
-      datetime: +new Date(),
-      title: "Inizio progetto",
-      note: "Nome in codice: Dottie",
-      author: {
-        name: "Francesco",
-        surname: "Michienzi",
-      },
-    },
-  ].map((item, i) => ({ ...item, datetime: item.datetime - 76543210 * i }));
-  return <DottieList list={list} />;
+  const { notes, loading /*, error*/ } = useSelector((state) => state.timeline);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(init()).catch((err) => {
+      console.error(err);
+    });
+    // eslint-disable-next-line
+  }, []);
+
+  return <DottieList list={notes} loading={loading} />;
 }
