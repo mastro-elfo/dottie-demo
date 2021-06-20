@@ -11,3 +11,10 @@ export class NotLogged extends Error {
     this.name = "NotLogged";
   }
 }
+
+export class TimelineEnd extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "TimelineEnd";
+  }
+}
