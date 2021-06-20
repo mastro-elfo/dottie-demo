@@ -4,3 +4,10 @@ export class UserNotFound extends Error {
     this.name = "UserNotFound";
   }
 }
+
+export class NotLogged extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "NotLogged";
+  }
+}

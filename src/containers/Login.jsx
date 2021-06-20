@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Box, Button, TextField, Typography } from "@material-ui/core";
 import { Content, Header, Page } from "mastro-elfo-mui";
 import { Responsive } from "../components";
 
-import { login } from "../features/login";
+import { init, login } from "../features/login";
+import { create } from "../controllers/login";
 
 export default function Component({ children }) {
   const [username, setUsername] = useState("");
@@ -12,8 +13,17 @@ export default function Component({ children }) {
   const dispatch = useDispatch();
   const { loading, logged, error } = useSelector((state) => state.login);
 
+  useEffect(() => {
+    dispatch(init());
+    // eslint-disable-next-line
+  }, []);
+
   const handleLogin = () => {
-    dispatch(login({ username, password }));
+    dispatch(login({ username, password }))
+      .then(({ payload }) => create(payload))
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   const handleKeyPress = (e) => {

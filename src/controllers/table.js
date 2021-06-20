@@ -1,21 +1,23 @@
 import { load, dump } from "./fs";
 
-export function create(table, data) {
-  return load(table, [])
+export function create(table, data, defaultValue = []) {
+  return load(table, defaultValue)
     .then((list) => [...list, data])
     .then((list) => dump(table, list));
 }
 
-export function read(table, id) {
-  return load(table, []).then((list) => list.find((i) => i.id === id));
+export function read(table, id, defaultValue = []) {
+  return load(table, defaultValue).then((list) =>
+    list.find((i) => i.id === id)
+  );
 }
 
-export function readAll(table) {
-  return load(table, []);
+export function readAll(table, defaultValue = []) {
+  return load(table, defaultValue);
 }
 
-export function update(table, id, data) {
-  return load(table, [])
+export function update(table, id, data, defaultValue = []) {
+  return load(table, defaultValue)
     .then((list) => {
       const index = list.findIndex((i) => i.id === id);
       list[index] = data;
@@ -24,8 +26,8 @@ export function update(table, id, data) {
     .then((list) => dump(table, list));
 }
 
-export function destroy(table, id) {
-  return load(table, [])
+export function destroy(table, id, defaultValue = []) {
+  return load(table, defaultValue)
     .then((list) => list.filter((i) => i.id !== id))
     .then((list) => dump(table, list));
 }
