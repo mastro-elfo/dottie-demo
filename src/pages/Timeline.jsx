@@ -15,7 +15,7 @@ import { drawer as settings } from "./Settings";
 import { drawer as users } from "./Users";
 import { drawer as profileView } from "./ProfileView";
 
-import { TimelineAvatar } from "../components";
+import { TimelineDrawerToolbar } from "../components";
 import { DottieContent } from "../containers";
 
 function Component() {
@@ -27,8 +27,12 @@ function Component() {
     <Page
       header={
         <Header
+          withContainer
           leftAction={
             <DrawerIconButton>
+              <TimelineDrawerToolbar subtitle={admin ? "Admin" : ""}>
+                {logged.name} {logged.surname}
+              </TimelineDrawerToolbar>
               <DrawerLists
                 lists={[
                   {
@@ -45,9 +49,8 @@ function Component() {
               />
             </DrawerIconButton>
           }
-          rightAction={<TimelineAvatar user={logged} />}
         >
-          Timeline, {logged.name} {logged.surname}
+          Timeline
         </Header>
       }
       content={
