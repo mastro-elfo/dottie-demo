@@ -1,19 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  IconButton,
-  List,
-  ListItem,
-  Tooltip,
-  Typography,
-} from "@material-ui/core";
+import { Button, List, ListItem, Typography } from "@material-ui/core";
 import { Content, Header, Page } from "mastro-elfo-mui";
 import { useSnackbar } from "notistack";
 
 import { Responsive, ValidateField } from "../components";
 import { init, createUser } from "../features/hasAdmin";
-
-import SaveIcon from "@material-ui/icons/Save";
 
 export default function Component({ children }) {
   const [valid, setValid] = useState(false);
@@ -31,13 +23,14 @@ export default function Component({ children }) {
   useEffect(() => {
     // Check if any field is empty
     if (
-      ![name, surname, username, password, rPassword].every((x) => x.trim())
+      [name, surname, username, password, rPassword].some((x) =>
+        validateEmpty(x)
+      )
     ) {
       return setValid(false);
     }
-    if (password !== rPassword) {
-      return setValid(false);
-    }
+    if (validateRPassword(password, rPassword)) return setValid(false);
+    // Otherwise
     setValid(true);
   }, [name, surname, username, password, rPassword]);
 
@@ -60,25 +53,7 @@ export default function Component({ children }) {
   if (!hasAdmin) {
     return (
       <Page
-        header={
-          <Header
-            withContainer
-            rightAction={
-              <Tooltip
-                title={<Typography variant="body2">Ok, click save</Typography>}
-                arrow
-                placement="left"
-                open={valid}
-              >
-                <IconButton disabled={!valid} onClick={handleSave}>
-                  <SaveIcon />
-                </IconButton>
-              </Tooltip>
-            }
-          >
-            Create an Admin
-          </Header>
-        }
+        header={<Header withContainer>Create an Admin</Header>}
         content={
           <Content>
             <Responsive
@@ -153,6 +128,16 @@ export default function Component({ children }) {
                     validateFn={validateRPassword}
                     validateArgs={[password, rPassword]}
                   />
+                </ListItem>
+                <ListItem>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    disabled={!valid}
+                    onClick={handleSave}
+                  >
+                    Save
+                  </Button>
                 </ListItem>
               </List>
             </Responsive>

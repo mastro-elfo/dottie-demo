@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Box, Button, TextField, Typography } from "@material-ui/core";
+import {
+  Button,
+  List,
+  ListItem,
+  TextField,
+  Typography,
+} from "@material-ui/core";
 import { Content, Header, Page } from "mastro-elfo-mui";
 import { Responsive } from "../components";
 
@@ -49,31 +55,37 @@ export default function Component({ children }) {
                   {error}
                 </Typography>
               )}
-              <TextField
-                fullWidth
-                label="Username"
-                value={username}
-                onChange={({ target: { value } }) => setUsername(value)}
-                onKeyPress={handleKeyPress}
-              />
-              <TextField
-                fullWidth
-                label="Password"
-                type="password"
-                value={password}
-                onChange={({ target: { value } }) => setPassword(value)}
-                onKeyPress={handleKeyPress}
-              />
-              <Box py={1}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleLogin}
-                  disabled={!username || !password || loading}
-                >
-                  Login
-                </Button>
-              </Box>
+              <List>
+                <ListItem>
+                  <TextField
+                    fullWidth
+                    label="Username"
+                    value={username}
+                    onChange={({ target: { value } }) => setUsername(value)}
+                    onKeyPress={handleKeyPress}
+                  />
+                </ListItem>
+                <ListItem>
+                  <TextField
+                    fullWidth
+                    label="Password"
+                    type="password"
+                    value={password}
+                    onChange={({ target: { value } }) => setPassword(value)}
+                    onKeyPress={handleKeyPress}
+                  />
+                </ListItem>
+                <ListItem>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handleLogin}
+                    disabled={!username || !password || loading}
+                  >
+                    Login
+                  </Button>
+                </ListItem>
+              </List>
             </Responsive>
           </Content>
         }
