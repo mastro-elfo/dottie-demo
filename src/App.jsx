@@ -40,6 +40,7 @@ export default function App() {
       }}
       RouterProps={{
         Router: BrowserRouter,
+        basename: "dottie-demo",
         routes: [
           about,
           log,
