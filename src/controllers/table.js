@@ -2,7 +2,7 @@ import { load, dump } from "./fs";
 
 export function create(table, data, defaultValue = []) {
   return load(table, defaultValue)
-    .then((list) => [...list, data])
+    .then((list) => [data, ...list])
     .then((list) => dump(table, list));
 }
 
