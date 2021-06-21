@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/dottie-demo/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/dottie-demo/static/js/main.e68c69ff.chunk.js",
-    "main.js.map": "/dottie-demo/static/js/main.e68c69ff.chunk.js.map",
-    "runtime-main.js": "/dottie-demo/static/js/runtime-main.038793ca.js",
-    "runtime-main.js.map": "/dottie-demo/static/js/runtime-main.038793ca.js.map",
-    "static/js/2.438ef4c3.chunk.js": "/dottie-demo/static/js/2.438ef4c3.chunk.js",
-    "static/js/2.438ef4c3.chunk.js.map": "/dottie-demo/static/js/2.438ef4c3.chunk.js.map",
-    "static/js/3.ee17a777.chunk.js": "/dottie-demo/static/js/3.ee17a777.chunk.js",
-    "static/js/3.ee17a777.chunk.js.map": "/dottie-demo/static/js/3.ee17a777.chunk.js.map",
+    "main.js": "/dottie-demo/static/js/main.0350cfb7.chunk.js",
+    "main.js.map": "/dottie-demo/static/js/main.0350cfb7.chunk.js.map",
+    "runtime-main.js": "/dottie-demo/static/js/runtime-main.2b264151.js",
+    "runtime-main.js.map": "/dottie-demo/static/js/runtime-main.2b264151.js.map",
+    "static/js/2.7e5fac8b.chunk.js": "/dottie-demo/static/js/2.7e5fac8b.chunk.js",
+    "static/js/2.7e5fac8b.chunk.js.map": "/dottie-demo/static/js/2.7e5fac8b.chunk.js.map",
+    "static/js/3.cc2f5876.chunk.js": "/dottie-demo/static/js/3.cc2f5876.chunk.js",
+    "static/js/3.cc2f5876.chunk.js.map": "/dottie-demo/static/js/3.cc2f5876.chunk.js.map",
     "index.html": "/dottie-demo/index.html",
     "static/css/main.6dea0f05.chunk.css.map": "/dottie-demo/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.438ef4c3.chunk.js.LICENSE.txt": "/dottie-demo/static/js/2.438ef4c3.chunk.js.LICENSE.txt"
+    "static/js/2.7e5fac8b.chunk.js.LICENSE.txt": "/dottie-demo/static/js/2.7e5fac8b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.038793ca.js",
-    "static/js/2.438ef4c3.chunk.js",
+    "static/js/runtime-main.2b264151.js",
+    "static/js/2.7e5fac8b.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.e68c69ff.chunk.js"
+    "static/js/main.0350cfb7.chunk.js"
   ]
 }
