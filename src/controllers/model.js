@@ -8,12 +8,14 @@ import {
 
 export function create(table, author, data) {
   const now = new Date().toLocaleString();
+  const _author = { ...author };
+  delete _author.password;
   return create_table(table, {
     ...data,
     cDateTime: now,
     uDateTime: now,
-    cAuthor: author,
-    uAuthor: author,
+    cAuthor: _author,
+    uAuthor: _author,
     deleted: false,
     id: nanoid(),
   });

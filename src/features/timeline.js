@@ -1,7 +1,28 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const init = createAsyncThunk("timeline/init", async () => {
-  return new Promise((resolve) => setTimeout(resolve, 1000));
+import {
+  create as create_note,
+  readAll as readAll_notes,
+} from "../controllers/timeline";
+
+// import { TimelineEnd } from "../errors/";
+
+// import { MOCK_NOTES } from "./mock";
+//
+// export const init = createAsyncThunk("timeline/init", async () => {
+//   return readAll_notes();
+// });
+
+export const create = createAsyncThunk(
+  "timeline/create",
+  async ({ author, data }) => {
+    console.log("feature", data);
+    return create_note(author, data);
+  }
+);
+
+export const readAll = createAsyncThunk("timeline/readAll", async () => {
+  return readAll_notes();
 });
 
 const timeline = createSlice({
@@ -9,61 +30,33 @@ const timeline = createSlice({
   initialState: {
     loading: false,
     error: false,
-    notes: [
-      {
-        id: 16,
-        datetime: 1624183425273,
-        title: "Le note sono gestite con redux",
-        note:
-          "Ho creato lo store 'timeline' e ricavo la lista delle note con `useSelector`",
-        author: {
-          name: "Francesco",
-          surname: "Michienzi",
-        },
-      },
-      {
-        id: 15,
-        datetime: 1624183291083,
-        title: "Drawer",
-        note: "Tutte le pagine sono apribili",
-        author: {
-          name: "Francesco",
-          surname: "Michienzi",
-        },
-      },
-      {
-        id: 10,
-        datetime: 1624106747873,
-        title: "Avanzamento progetto",
-        note: "Tutto procede a meraviglia",
-        author: {
-          name: "Francesco",
-          surname: "Michienzi",
-        },
-      },
-      {
-        id: 1,
-        datetime: 1624030204663,
-        title: "Inizio progetto",
-        note: "Nome in codice: Dottie",
-        author: {
-          name: "Francesco",
-          surname: "Michienzi",
-        },
-      },
-    ],
+    notes: [],
+    hasMore: false,
   },
   extraReducers: {
-    [init.fulfilled]: (state, { payload }) => {
+    [readAll.fulfilled]: (state, { payload }) => {
       state.loading = false;
       state.error = false;
-      // state.notes = payload;
+      state.notes = payload;
     },
-    [init.pending]: (state) => {
+    [readAll.pending]: (state) => {
       state.loading = true;
       state.error = false;
     },
-    [init.rejected]: (state, { error }) => {
+    [readAll.rejected]: (state, { error }) => {
+      state.loading = false;
+      state.error = error.name;
+    },
+    [create.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+      state.error = false;
+      // state.notes = [payload, ...state.notes];
+    },
+    [create.pending]: (state) => {
+      state.loading = true;
+      state.error = false;
+    },
+    [create.rejected]: (state, { error }) => {
       state.loading = false;
       state.error = error.name;
     },
