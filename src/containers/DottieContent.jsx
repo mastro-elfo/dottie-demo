@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { readAll } from "../features/timeline";
@@ -20,9 +20,14 @@ export default function DottieContent({ user }) {
     // eslint-disable-next-line
   }, []);
 
+  const sorted = useMemo(() => {
+    console.log("Sorting", notes);
+    return notes.slice().sort((a, b) => b.datetime - a.datetime);
+  }, [notes]);
+
   return (
     <DottieList
-      list={notes}
+      list={sorted}
       loading={loading}
       hasMore={hasMore}
       onFetch={handleFetch}
