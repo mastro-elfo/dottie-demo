@@ -9,7 +9,7 @@ import { version } from "../version.json";
 function Component() {
   return (
     <Page
-      header={<Header LeftAction={<BackIconButton />}>About</Header>}
+      header={<Header leftAction={<BackIconButton />}>About</Header>}
       content={
         <Content>
           <Responsive

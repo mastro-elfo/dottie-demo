@@ -4,7 +4,7 @@ import DrawerIcon from "@material-ui/icons/BrokenImage";
 function Component() {
   return (
     <Page
-      header={<Header LeftAction={<BackIconButton />}>Profileedit</Header>}
+      header={<Header leftAction={<BackIconButton />}>Profileedit</Header>}
       content={<Content>Profileedit content</Content>}
     />
   );

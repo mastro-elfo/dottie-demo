@@ -6,7 +6,7 @@ import DrawerIcon from "@material-ui/icons/BrokenImage";
 function Component() {
   return (
     <Page
-      header={<Header LeftAction={<BackIconButton />}>Usercreate</Header>}
+      header={<Header leftAction={<BackIconButton />}>Usercreate</Header>}
       content={<Content>Usercreate content</Content>}
     />
   );
