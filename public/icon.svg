@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <bx:grid x="0" y="0" width="64" height="64"/>
+    <bx:guide x="256" y="256" angle="90"/>
+    <bx:guide x="256" y="128" angle="90"/>
+    <bx:guide x="256" y="384" angle="90"/>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="256" y1="128" x2="256" y2="448" id="gradient-0" gradientTransform="matrix(1, 0, 0, 1, -354, -92.040138)">
+      <stop offset="0" style="stop-color: rgb(244, 67, 54);"/>
+      <stop offset="0.399" style="stop-color: rgb(76, 175, 80);"/>
+      <stop offset="0.799" style="stop-color: rgb(33, 150, 243);"/>
+      <stop offset="1" style="stop-color: rgb(156, 39, 176);"/>
+    </linearGradient>
+    <filter id="inner-shadow-filter-0" x="-500%" y="-500%" width="1000%" height="1000%" bx:preset="inner-shadow 1 0 0 10 0.5 rgba(0,0,0,0.7)">
+      <feOffset dx="0" dy="0"/>
+      <feGaussianBlur stdDeviation="10"/>
+      <feComposite operator="out" in="SourceGraphic"/>
+      <feComponentTransfer result="choke">
+        <feFuncA type="linear" slope="1"/>
+      </feComponentTransfer>
+      <feFlood flood-color="rgba(0,0,0,0.7)" result="color"/>
+      <feComposite operator="in" in="color" in2="choke" result="shadow"/>
+      <feComposite operator="over" in="shadow" in2="SourceGraphic"/>
+    </filter>
+    <bx:guide x="256" y="452" angle="90"/>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 354, 92.040138)" style="">
+    <path d="M -94 35.96 L -94 355.96 C -94 359.96 -98 359.96 -98 359.96 C -98 359.96 -102 359.96 -102 355.96 L -102 35.96 L -94 35.96 Z" style="fill: url(#gradient-0); filter: url(#inner-shadow-filter-0);"/>
+  </g>
+  <g>
+    <circle style="fill: rgb(244, 67, 54); stroke: rgb(255, 255, 255); stroke-width: 0px;" cx="256" cy="128" r="32"/>
+    <line style="stroke-width: 16px; stroke-linecap: round; stroke: rgb(244, 67, 54); fill: rgb(244, 67, 54);" x1="320" y1="128" x2="448" y2="128"/>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 0, -127.563034)">
+    <circle style="fill: rgb(76, 175, 80); stroke: rgb(255, 255, 255); stroke-width: 0px;" cx="256" cy="383.563" r="32"/>
+    <line style="stroke-width: 16px; stroke-linecap: round; fill: none; stroke: rgb(76, 175, 80);" x1="64" y1="383.563" x2="192" y2="383.563"/>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 0, 128)">
+    <circle style="fill: rgb(33, 150, 243); stroke: rgb(255, 255, 255); stroke-width: 0px;" cx="256" cy="256" r="32"/>
+    <line style="stroke-width: 16px; stroke-linecap: round; fill: none; stroke: rgb(33, 150, 243);" x1="320" y1="256" x2="448" y2="256"/>
+  </g>
+</svg>
