@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { IconButton, TextField, Tooltip, Typography } from "@material-ui/core";
+import {
+  IconButton,
+  List,
+  ListItem,
+  Tooltip,
+  Typography,
+} from "@material-ui/core";
 import { Content, Header, Page } from "mastro-elfo-mui";
 import { useSnackbar } from "notistack";
 
-import { Responsive } from "../components";
+import { Responsive, ValidateField } from "../components";
 import { init, createUser } from "../features/hasAdmin";
 
 import SaveIcon from "@material-ui/icons/Save";
@@ -95,50 +101,60 @@ export default function Component({ children }) {
                 <li>View app log</li>
               </ul>
 
-              <TextField
-                fullWidth
-                label="Name"
-                value={name}
-                onChange={({ target: { value } }) => setName(value)}
-                error={!name.trim()}
-                helperText={!name.trim() && "Name can't be empty"}
-              />
-              <TextField
-                fullWidth
-                label="Surname"
-                value={surname}
-                onChange={({ target: { value } }) => setSurname(value)}
-                error={!surname.trim()}
-                helperText={!surname.trim() && "Surname can't be empty"}
-              />
-              <TextField
-                fullWidth
-                label="Username"
-                value={username}
-                onChange={({ target: { value } }) => setUsername(value)}
-                error={!username.trim()}
-                helperText={!username.trim() && "Username can't be empty"}
-              />
-              <TextField
-                fullWidth
-                label="Password"
-                type="password"
-                value={password}
-                onChange={({ target: { value } }) => setPassword(value)}
-                error={!password.trim()}
-                helperText={!password.trim() && "Password can't be empty"}
-              />
-              <TextField
-                fullWidth
-                label="Repeat Password"
-                type="password"
-                value={rPassword}
-                onChange={({ target: { value } }) => setRPassword(value)}
-                error={password !== rPassword}
-                helperText={
-                  password !== rPassword && "Password and Repeat don't match"
-                }
-              />
+              <List>
+                <ListItem>
+                  <ValidateField
+                    fullWidth
+                    label="Name"
+                    value={name}
+                    onChange={({ target: { value } }) => setName(value)}
+                    validateFn={validateEmpty}
+                    validateArgs={[name]}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ValidateField
+                    fullWidth
+                    label="Surname"
+                    value={surname}
+                    onChange={({ target: { value } }) => setSurname(value)}
+                    validateFn={validateEmpty}
+                    validateArgs={[surname]}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ValidateField
+                    fullWidth
+                    label="Username"
+                    value={username}
+                    onChange={({ target: { value } }) => setUsername(value)}
+                    validateFn={validateEmpty}
+                    validateArgs={[username]}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ValidateField
+                    fullWidth
+                    label="Password"
+                    type="password"
+                    value={password}
+                    onChange={({ target: { value } }) => setPassword(value)}
+                    validateFn={validateEmpty}
+                    validateArgs={[password]}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ValidateField
+                    fullWidth
+                    label="Repeat Password"
+                    type="password"
+                    value={rPassword}
+                    onChange={({ target: { value } }) => setRPassword(value)}
+                    validateFn={validateRPassword}
+                    validateArgs={[password, rPassword]}
+                  />
+                </ListItem>
+              </List>
             </Responsive>
           </Content>
         }
@@ -147,4 +163,26 @@ export default function Component({ children }) {
   }
 
   return children;
+}
+
+function validateEmpty(value) {
+  if (!value.trim())
+    return {
+      error: true,
+      helperText: "This field can't be empty",
+    };
+}
+
+function validateRPassword(password, rPassword) {
+  if (!rPassword.trim())
+    return {
+      error: true,
+      helperText: "This field can't be empty",
+    };
+  if (rPassword !== password) {
+    return {
+      error: true,
+      helperText: "The two passwords don't match",
+    };
+  }
 }
