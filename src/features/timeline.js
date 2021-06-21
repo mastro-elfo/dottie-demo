@@ -16,7 +16,6 @@ import {
 export const create = createAsyncThunk(
   "timeline/create",
   async ({ author, data }) => {
-    console.log("feature", data);
     return create_note(author, data);
   }
 );
