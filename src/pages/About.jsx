@@ -22,6 +22,9 @@ function Component() {
               <ListItem>
                 <ListItemText primary={version} secondary="Version" />
               </ListItem>
+              <ListItem>
+                <ListItemText primary="MIT" secondary="License" />
+              </ListItem>
             </List>
           </Responsive>
         </Content>
