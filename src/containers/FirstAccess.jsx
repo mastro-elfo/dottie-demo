@@ -5,8 +5,7 @@ import { Content, Header, Page } from "mastro-elfo-mui";
 import { useSnackbar } from "notistack";
 
 import { Responsive } from "../components";
-import { init } from "../features/hasAdmin";
-import { create as create_user } from "../controllers/user";
+import { init, createUser } from "../features/hasAdmin";
 
 import SaveIcon from "@material-ui/icons/Save";
 
@@ -42,9 +41,8 @@ export default function Component({ children }) {
   }, []);
 
   const handleSave = () => {
-    create_user(null, { name, surname, username, password, admin: true })
+    dispatch(createUser({ name, surname, username, password, admin: true }))
       .then(() => {
-        dispatch(init());
         enqueueSnackbar("User created", { variant: "success" });
       })
       .catch((err) => {

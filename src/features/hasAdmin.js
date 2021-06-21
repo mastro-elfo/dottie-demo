@@ -1,10 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { readAll } from "../controllers/user";
+import { create, readAll } from "../controllers/user";
 
 export const init = createAsyncThunk("hasAdmin", async () => {
   const response = await readAll();
   return response;
+});
+
+export const createUser = createAsyncThunk("hasAdmin/create", async (data) => {
+  return create(null, data);
 });
 
 const hasAdmin = createSlice({
@@ -12,18 +16,36 @@ const hasAdmin = createSlice({
   initialState: {
     loading: false,
     has: false,
-    error: null,
+    error: false,
   },
   reducers: {},
   extraReducers: {
     [init.fulfilled]: (state, { payload }) => {
       state.loading = false;
       state.has = payload.some(({ admin: { is } }) => is);
+      state.error = false;
     },
     [init.pending]: (state) => {
       state.loading = false;
+      state.error = false;
     },
-    // [init.rejected]: (state, action)=>{}
+    [init.rejected]: (state, { error }) => {
+      state.loading = false;
+      state.error = error.name;
+    },
+    [createUser.fulfilled]: (state) => {
+      state.loading = false;
+      state.has = true;
+      state.error = false;
+    },
+    [createUser.pending]: (state) => {
+      state.loading = true;
+      state.error = false;
+    },
+    [createUser.rejected]: (state, { error }) => {
+      state.loading = false;
+      state.error = error.name;
+    },
   },
 });
 
