@@ -4,6 +4,7 @@ import {
   update as update_model,
   readAll as readAll_model,
 } from "./model";
+import { create as log, LOG_INFO, LOG_CREATE } from "./log";
 import { encrypt } from "./utils";
 
 export function create(author, { name, surname, username, password, admin }) {
@@ -14,7 +15,11 @@ export function create(author, { name, surname, username, password, admin }) {
     password: encrypt(password),
     admin: { is: admin, downgrade: false },
     reset: { password: "", expire: 0 },
-  });
+  }).then((res) =>
+    log(author, { severity: LOG_INFO, type: LOG_CREATE, table: "users" }).then(
+      () => res
+    )
+  );
 }
 
 export function read(id) {

@@ -1,11 +1,30 @@
 import { BackIconButton, Content, Header, Page } from "mastro-elfo-mui";
+import { LogList } from "../components";
+
 import DrawerIcon from "@material-ui/icons/ViewList";
 
 function Component() {
   return (
     <Page
-      header={<Header LeftAction={<BackIconButton />}>Log</Header>}
-      content={<Content>Log content</Content>}
+      header={<Header leftAction={<BackIconButton />}>Log</Header>}
+      content={
+        <Content>
+          <LogList
+            items={[
+              {
+                id: 1,
+                severity: "info",
+                short: "Short description",
+                description: "Long description",
+                cDateTime: +new Date(),
+                cAuthor: null,
+                type: "create",
+                table: "users",
+              },
+            ]}
+          />
+        </Content>
+      }
     />
   );
 }
