@@ -7,11 +7,17 @@ import {
 import { readAll } from "../controllers/user";
 import { encrypt } from "../controllers/utils";
 import { NotLogged, UserNotFound } from "../errors/";
+import { log, LOG_INFO, LOG_LOGIN, LOG_NONE } from "../controllers/log";
 
 export const init = createAsyncThunk("login/init", async () => {
   return read_login().then((user) => {
     if (user) {
-      return user;
+      return log(user, {
+        severity: LOG_INFO,
+        type: LOG_LOGIN,
+        table: LOG_NONE,
+        short: `${user.name} ${user.surname} logged in`,
+      })(user);
     }
     throw new NotLogged();
   });

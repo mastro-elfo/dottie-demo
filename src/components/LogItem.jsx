@@ -28,8 +28,7 @@ export default function LogItem({
   cAuthor = null,
   type = LOG_NONE,
   table = LOG_NONE,
-  // short = "",
-  // description = "",
+  short = "",
 }) {
   const { name, surname } = cAuthor
     ? cAuthor
@@ -41,9 +40,21 @@ export default function LogItem({
         {loading ? <Skeleton /> : MAP_ICONS[severity] || <span />}
       </ListItemIcon>
       <ListItemText
-        primary={loading ? <Skeleton /> : `${name} ${surname} ${type} ${table}`}
+        primary={
+          loading ? (
+            <Skeleton />
+          ) : short ? (
+            short
+          ) : (
+            `${name} ${surname} ${type} ${table}`
+          )
+        }
         secondary={
-          loading ? <Skeleton /> : new Date(cDateTime).toLocaleString()
+          loading ? (
+            <Skeleton />
+          ) : (
+            `${severity} - ${new Date(cDateTime).toLocaleString()}`
+          )
         }
       />
     </ListItem>

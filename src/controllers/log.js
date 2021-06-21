@@ -7,24 +7,22 @@ export const LOG_ERROR = "error";
 export const LOG_CREATE = "create";
 export const LOG_UPDATE = "update";
 export const LOG_DELETE = "delete";
+export const LOG_LOGIN = "login";
 export const LOG_NONE = "none";
+
+export function log(author, data) {
+  return (res) => create(author, data).then(() => res);
+}
 
 export function create(
   author,
-  {
-    severity = LOG_DEBUG,
-    type = LOG_NONE,
-    table = LOG_NONE,
-    short = "No short description provided",
-    description = "No description provided",
-  }
+  { severity = LOG_DEBUG, type = LOG_NONE, table = LOG_NONE, short = "" }
 ) {
   return create_model("log", author, {
     severity,
     type,
     table,
     short,
-    description,
   });
 }
 

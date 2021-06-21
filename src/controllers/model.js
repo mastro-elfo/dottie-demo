@@ -7,7 +7,7 @@ import {
 } from "./table";
 
 export function create(table, author, data) {
-  const now = new Date().toLocaleString();
+  const now = +new Date();
   const _author = { ...author };
   delete _author.password;
   return create_table(table, {
