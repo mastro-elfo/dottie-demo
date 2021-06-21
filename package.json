@@ -32,6 +32,7 @@
     "start": "react-scripts start",
     "prebuild": "node scripts/init.js",
     "build": "react-scripts build",
+    "pretest": "node scripts/init.js",
     "test": "react-scripts test",
     "eject": "echo \"react-scripts eject\" echoed"
   },
