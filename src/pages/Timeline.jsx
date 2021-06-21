@@ -1,7 +1,5 @@
 import { useSelector } from "react-redux";
 
-import { IconButton } from "@material-ui/core";
-
 import {
   DrawerIconButton,
   DrawerLists,
@@ -18,9 +16,11 @@ import { drawer as users } from "./Users";
 import { drawer as profileView } from "./ProfileView";
 
 import { TimelineDrawerToolbar } from "../components";
-import { DottieAddIconButton, DottieContent } from "../containers";
-
-import LogoutIcon from "@material-ui/icons/ExitToApp";
+import {
+  DottieAddIconButton,
+  DottieContent,
+  LogoutButton,
+} from "../containers";
 
 function Component() {
   const { logged } = useSelector((state) => state.login);
@@ -44,11 +44,7 @@ function Component() {
                     items: [
                       {
                         ...profileView,
-                        action: (
-                          <IconButton>
-                            <LogoutIcon />
-                          </IconButton>
-                        ),
+                        action: <LogoutButton />,
                       },
                       admin ? users : null,
                       admin ? settings : null,

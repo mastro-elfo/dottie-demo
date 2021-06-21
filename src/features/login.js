@@ -1,6 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { read as read_login } from "../controllers/login";
+import {
+  create as create_login,
+  read as read_login,
+} from "../controllers/login";
 import { readAll } from "../controllers/user";
 import { encrypt } from "../controllers/utils";
 import { NotLogged, UserNotFound } from "../errors/";
@@ -31,12 +34,16 @@ export const login = createAsyncThunk(
   }
 );
 
+export const logout = createAsyncThunk("login/logout", async () => {
+  return create_login(null);
+});
+
 const loginSlice = createSlice({
   name: "login",
   initialState: {
     loading: false,
-    error: null,
-    logged: null,
+    error: false,
+    logged: false,
   },
   extraReducers: {
     [login.fulfilled]: (state, { payload }) => {
@@ -63,12 +70,25 @@ const loginSlice = createSlice({
     },
     [init.rejected]: (state, { error }) => {
       state.loading = false;
-      state.logged = null;
+      state.logged = false;
       if (error.name === "NotLogged") {
         state.error = false;
       } else {
         state.error = error.name;
       }
+    },
+    [logout.fulfilled]: (state) => {
+      state.loading = false;
+      state.error = false;
+      state.logged = false;
+    },
+    [logout.pending]: (state) => {
+      state.loading = true;
+      state.error = false;
+    },
+    [logout.rejected]: (state, { error }) => {
+      state.loading = false;
+      state.error = error.name;
     },
   },
 });

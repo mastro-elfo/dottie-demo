@@ -7308,9 +7308,9 @@ map-visit@^1.0.0:
     object-visit "^1.0.0"
 
 mastro-elfo-mui@^2.21.0:
-  version "2.21.0"
-  resolved "https://registry.yarnpkg.com/mastro-elfo-mui/-/mastro-elfo-mui-2.21.0.tgz#6c08835df66a7fe7eddeed206c373f8bad762970"
-  integrity sha512-FU5XA5S5VlJCsycthxa7oXsQDxKsTHjJrFCDVmDtv9n2rAuVSpUAa120T7DSlzn0wkZZDGGDkKu/LFmbQ+AvzQ==
+  version "2.21.1"
+  resolved "https://registry.yarnpkg.com/mastro-elfo-mui/-/mastro-elfo-mui-2.21.1.tgz#36fac6d4f31b9cbcc7c0cfeaf85fc3feb870a4ef"
+  integrity sha512-fheep/J/bMDM95vr236/WRm5pnXs4lL4RxBCApxyF7cZRuMnC3nvEtmpnjWx9uC7fspuIi9Paax5ShwViZmrQQ==
 
 md5.js@^1.3.4:
   version "1.3.5"
