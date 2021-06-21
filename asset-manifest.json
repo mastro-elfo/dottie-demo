@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/dottie-demo/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/dottie-demo/static/js/main.d688de16.chunk.js",
-    "main.js.map": "/dottie-demo/static/js/main.d688de16.chunk.js.map",
+    "main.js": "/dottie-demo/static/js/main.e68c69ff.chunk.js",
+    "main.js.map": "/dottie-demo/static/js/main.e68c69ff.chunk.js.map",
     "runtime-main.js": "/dottie-demo/static/js/runtime-main.038793ca.js",
     "runtime-main.js.map": "/dottie-demo/static/js/runtime-main.038793ca.js.map",
     "static/js/2.438ef4c3.chunk.js": "/dottie-demo/static/js/2.438ef4c3.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.038793ca.js",
     "static/js/2.438ef4c3.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.d688de16.chunk.js"
+    "static/js/main.e68c69ff.chunk.js"
   ]
 }
