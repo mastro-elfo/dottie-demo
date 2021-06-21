@@ -1,11 +1,31 @@
+import { List, ListItem, ListItemText } from "@material-ui/core";
 import { BackIconButton, Content, Header, Page } from "mastro-elfo-mui";
+import { Responsive } from "../components";
+
 import DrawerIcon from "@material-ui/icons/Info";
+
+import { version } from "../version.json";
 
 function Component() {
   return (
     <Page
       header={<Header LeftAction={<BackIconButton />}>About</Header>}
-      content={<Content>About content</Content>}
+      content={
+        <Content>
+          <Responsive
+            ContainerProps={{ justify: "center" }}
+            xs={12}
+            md={10}
+            xl={8}
+          >
+            <List>
+              <ListItem>
+                <ListItemText primary={version} secondary="Version" />
+              </ListItem>
+            </List>
+          </Responsive>
+        </Content>
+      }
     />
   );
 }
