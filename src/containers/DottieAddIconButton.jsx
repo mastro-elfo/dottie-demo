@@ -35,6 +35,8 @@ export default function DottieAddIconButton() {
       .then(() => dispatch(readAll()))
       .then(() => {
         setOpen(false);
+        setTitle("");
+        setNote("");
       })
       .catch((err) => {
         console.error("Error creating note", err);
