@@ -30,13 +30,14 @@ const timeline = createSlice({
     loading: false,
     error: false,
     notes: [],
-    hasMore: false,
+    hasMore: true,
   },
   extraReducers: {
     [readAll.fulfilled]: (state, { payload }) => {
       state.loading = false;
       state.error = false;
       state.notes = payload;
+      state.hasMore = false;
     },
     [readAll.pending]: (state) => {
       state.loading = true;
