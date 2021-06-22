@@ -11,6 +11,13 @@ export default function DottieList({
 }) {
   return (
     <Timeline>
+      {list.length === 0 && (
+        <DottieItem
+          datetime={+new Date()}
+          title="There are no notes to show"
+          note="Click the + button to add a new note or edit the search parameters"
+        />
+      )}
       <InfiniteScroll
         dataLength={list.length}
         hasMore={hasMore}
