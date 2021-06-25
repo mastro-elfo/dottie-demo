@@ -23,7 +23,11 @@ function Component() {
   }, []);
   return (
     <Page
-      header={<Header leftAction={<BackIconButton />}>Log</Header>}
+      header={
+        <Header withContainer leftAction={<BackIconButton />}>
+          Log
+        </Header>
+      }
       content={
         <Content>
           <LogList items={items} loading={loading} />

@@ -4,7 +4,11 @@ import DrawerIcon from "@material-ui/icons/People";
 function Component() {
   return (
     <Page
-      header={<Header leftAction={<BackIconButton />}>Users</Header>}
+      header={
+        <Header withContainer leftAction={<BackIconButton />}>
+          Users
+        </Header>
+      }
       content={<Content>Users content</Content>}
     />
   );
